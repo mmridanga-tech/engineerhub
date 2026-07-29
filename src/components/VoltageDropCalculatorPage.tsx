@@ -28,6 +28,7 @@ interface VoltageDropCalculatorPageProps {
   onBackToHome: () => void;
   onOpenAIAssistant?: () => void;
   onOpenCableSizeCalculator?: () => void;
+  onOpenLoadCalculator?: () => void;
 }
 
 // Available Standard Conductor Cross-Section Sizes (mm²)
@@ -45,6 +46,7 @@ export const VoltageDropCalculatorPage: React.FC<VoltageDropCalculatorPageProps>
   onBackToHome,
   onOpenAIAssistant,
   onOpenCableSizeCalculator,
+  onOpenLoadCalculator,
 }) => {
   const { showToast } = useTheme();
 
@@ -213,11 +215,20 @@ IEC 60364-5-52 & NEC Article 210 Verified - EngineerHub v2.5`;
             <span>Back to EngineerHub Hub</span>
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {onOpenLoadCalculator && (
+              <button
+                onClick={onOpenLoadCalculator}
+                className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-amber-300 border border-amber-500/30 hover:bg-amber-500/10 text-xs font-semibold"
+              >
+                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <span>Load Calculator</span>
+              </button>
+            )}
             {onOpenCableSizeCalculator && (
               <button
                 onClick={onOpenCableSizeCalculator}
-                className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/10 text-xs font-semibold"
+                className="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-indigo-300 border border-indigo-500/30 hover:bg-indigo-500/10 text-xs font-semibold"
               >
                 <Zap className="w-3.5 h-3.5 text-indigo-400" />
                 <span>Cable Size Calculator</span>

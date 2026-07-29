@@ -11,6 +11,7 @@ interface PopularToolsGridProps {
   onOpenAIAssistant: () => void;
   onOpenCableCalculator?: () => void;
   onOpenVoltageDropCalculator?: () => void;
+  onOpenLoadCalculator?: () => void;
 }
 
 const getToolIcon = (iconName: string) => {
@@ -36,6 +37,7 @@ export const PopularToolsGrid: React.FC<PopularToolsGridProps> = ({
   onOpenAIAssistant,
   onOpenCableCalculator,
   onOpenVoltageDropCalculator,
+  onOpenLoadCalculator,
 }) => {
   const [selectedTool, setSelectedTool] = useState<ToolItem | null>(null);
 
@@ -164,6 +166,8 @@ export const PopularToolsGrid: React.FC<PopularToolsGridProps> = ({
                       onOpenCableCalculator();
                     } else if ((tool.id === 'voltage-drop' || titleLower.includes('voltage drop')) && onOpenVoltageDropCalculator) {
                       onOpenVoltageDropCalculator();
+                    } else if ((tool.id === 'load-calculator' || titleLower.includes('load calculator')) && onOpenLoadCalculator) {
+                      onOpenLoadCalculator();
                     } else {
                       setSelectedTool(tool);
                     }
@@ -171,7 +175,7 @@ export const PopularToolsGrid: React.FC<PopularToolsGridProps> = ({
                   className="w-full py-3 px-4 rounded-xl glass-panel text-slate-200 dark:text-slate-200 light:text-slate-800 border border-slate-700/60 hover:border-indigo-500/60 hover:bg-indigo-600/20 hover:text-white transition-all flex items-center justify-center gap-2 text-sm font-semibold group-hover:shadow-md"
                 >
                   <span>
-                    {tool.id === 'cable-size' || tool.title.toLowerCase().includes('cable size') || tool.id === 'voltage-drop' || tool.title.toLowerCase().includes('voltage drop')
+                    {tool.id === 'cable-size' || tool.title.toLowerCase().includes('cable size') || tool.id === 'voltage-drop' || tool.title.toLowerCase().includes('voltage drop') || tool.id === 'load-calculator' || tool.title.toLowerCase().includes('load calculator')
                       ? 'Launch Dedicated Calculator'
                       : 'Open Tool'}
                   </span>

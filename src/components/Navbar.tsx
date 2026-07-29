@@ -9,6 +9,7 @@ interface NavbarProps {
   onOpenAIAssistant: () => void;
   onOpenCableCalculator?: () => void;
   onOpenVoltageDropCalculator?: () => void;
+  onOpenLoadCalculator?: () => void;
   currentView?: string;
   onGoHome?: () => void;
 }
@@ -18,6 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenAIAssistant,
   onOpenCableCalculator,
   onOpenVoltageDropCalculator,
+  onOpenLoadCalculator,
   currentView = 'home',
   onGoHome,
 }) => {
@@ -143,6 +145,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Zap className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400" />
               <span>Cable Size</span>
+            </button>
+          )}
+
+          {/* Load Calculator Direct Button */}
+          {onOpenLoadCalculator && (
+            <button
+              onClick={onOpenLoadCalculator}
+              className={`hidden sm:flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all shadow-sm ${
+                currentView === 'load-calculator'
+                  ? 'bg-amber-600 text-white shadow-amber-600/30 border border-amber-400'
+                  : 'glass-card text-amber-400 border border-amber-500/30 hover:bg-amber-500/10'
+              }`}
+            >
+              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+              <span>Load Calc</span>
             </button>
           )}
 

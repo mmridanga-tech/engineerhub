@@ -27,6 +27,8 @@ import { useTheme } from '../context/ThemeContext';
 interface CableSizeCalculatorPageProps {
   onBackToHome: () => void;
   onOpenAIAssistant?: () => void;
+  onOpenVoltageDropCalculator?: () => void;
+  onOpenLoadCalculator?: () => void;
 }
 
 // Standard Cable Table Data (IEC 60364-5-52 / BS 7671)
@@ -74,6 +76,8 @@ const STANDARD_MCBS = [6, 10, 16, 20, 25, 32, 40, 50, 63, 80, 100, 125, 160, 200
 export const CableSizeCalculatorPage: React.FC<CableSizeCalculatorPageProps> = ({
   onBackToHome,
   onOpenAIAssistant,
+  onOpenVoltageDropCalculator,
+  onOpenLoadCalculator,
 }) => {
   const { showToast } = useTheme();
 
@@ -293,7 +297,25 @@ IEC 60364 & IS 7098 Verified - EngineerHub v2.5`;
             <span>Back to EngineerHub Hub</span>
           </button>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {onOpenLoadCalculator && (
+              <button
+                onClick={onOpenLoadCalculator}
+                className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-amber-300 border border-amber-500/30 hover:bg-amber-500/10 text-xs font-semibold"
+              >
+                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <span>Load Calculator</span>
+              </button>
+            )}
+            {onOpenVoltageDropCalculator && (
+              <button
+                onClick={onOpenVoltageDropCalculator}
+                className="hidden md:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/10 text-xs font-semibold"
+              >
+                <Zap className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Voltage Drop</span>
+              </button>
+            )}
             <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>IEC 60364 & NEC Article 310 Verified</span>
