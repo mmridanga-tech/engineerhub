@@ -1,0 +1,6 @@
+{
+  "name": "EngineerHub",
+  "description": "EngineerHub - The Ultimate Engineering Toolkit. A modern glassmorphic platform featuring developer utilities, engineering categories, interactive tools, and platform documentation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
