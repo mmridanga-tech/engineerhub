@@ -37,6 +37,7 @@ interface MotorCurrentCalculatorPageProps {
   onOpenCableSizeCalculator?: () => void;
   onOpenVoltageDropCalculator?: () => void;
   onOpenLoadCalculator?: () => void;
+  onOpenTransformerCalculator?: () => void;
 }
 
 // Preset Engineering Motor Scenarios
@@ -134,6 +135,7 @@ export const MotorCurrentCalculatorPage: React.FC<MotorCurrentCalculatorPageProp
   onOpenCableSizeCalculator,
   onOpenVoltageDropCalculator,
   onOpenLoadCalculator,
+  onOpenTransformerCalculator,
 }) => {
   const { showToast } = useTheme();
 
@@ -522,6 +524,15 @@ Certified by EngineerHub Electrical Calculation Engine v2.5
               >
                 <Activity className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Voltage Drop</span>
+              </button>
+            )}
+            {onOpenTransformerCalculator && (
+              <button
+                onClick={onOpenTransformerCalculator}
+                className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-amber-300 border border-amber-500/30 hover:bg-amber-500/10 text-xs font-semibold"
+              >
+                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <span>Transformer</span>
               </button>
             )}
             <span className="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-semibold flex items-center gap-1.5">

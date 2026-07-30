@@ -16,9 +16,10 @@ import { CableSizeCalculatorPage } from './components/CableSizeCalculatorPage';
 import { VoltageDropCalculatorPage } from './components/VoltageDropCalculatorPage';
 import { LoadCalculatorPage } from './components/LoadCalculatorPage';
 import { MotorCurrentCalculatorPage } from './components/MotorCurrentCalculatorPage';
+import { TransformerCalculatorPage } from './components/TransformerCalculatorPage';
 
 export function EngineerHubContent() {
-  const [currentView, setCurrentView] = useState<'home' | 'cable-calculator' | 'voltage-drop' | 'load-calculator' | 'motor-calculator'>('motor-calculator');
+  const [currentView, setCurrentView] = useState<'home' | 'cable-calculator' | 'voltage-drop' | 'load-calculator' | 'motor-calculator' | 'transformer-calculator'>('transformer-calculator');
   const [isAIOpen, setIsAIOpen] = useState(false);
   const [isSpecsOpen, setIsSpecsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -57,6 +58,10 @@ export function EngineerHubContent() {
           setCurrentView('motor-calculator');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onOpenTransformerCalculator={() => {
+          setCurrentView('transformer-calculator');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         currentView={currentView}
         onGoHome={() => {
           setCurrentView('home');
@@ -93,6 +98,10 @@ export function EngineerHubContent() {
                   setCurrentView('motor-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
+                onOpenTransformerCalculator={() => {
+                  setCurrentView('transformer-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
               />
             </motion.div>
           ) : currentView === 'voltage-drop' ? (
@@ -119,6 +128,10 @@ export function EngineerHubContent() {
                 }}
                 onOpenMotorCalculator={() => {
                   setCurrentView('motor-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenTransformerCalculator={() => {
+                  setCurrentView('transformer-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               />
@@ -149,6 +162,10 @@ export function EngineerHubContent() {
                   setCurrentView('motor-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
+                onOpenTransformerCalculator={() => {
+                  setCurrentView('transformer-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
               />
             </motion.div>
           ) : currentView === 'motor-calculator' ? (
@@ -175,6 +192,42 @@ export function EngineerHubContent() {
                 }}
                 onOpenLoadCalculator={() => {
                   setCurrentView('load-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenTransformerCalculator={() => {
+                  setCurrentView('transformer-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
+            </motion.div>
+          ) : currentView === 'transformer-calculator' ? (
+            <motion.div
+              key="transformer-calculator"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+            >
+              <TransformerCalculatorPage
+                onBackToHome={() => {
+                  setCurrentView('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenAIAssistant={() => setIsAIOpen(true)}
+                onOpenCableSizeCalculator={() => {
+                  setCurrentView('cable-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenVoltageDropCalculator={() => {
+                  setCurrentView('voltage-drop');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenLoadCalculator={() => {
+                  setCurrentView('load-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenMotorCalculator={() => {
+                  setCurrentView('motor-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               />
@@ -217,6 +270,10 @@ export function EngineerHubContent() {
                 }}
                 onOpenMotorCalculator={() => {
                   setCurrentView('motor-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenTransformerCalculator={() => {
+                  setCurrentView('transformer-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               />

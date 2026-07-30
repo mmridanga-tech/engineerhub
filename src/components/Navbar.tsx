@@ -11,6 +11,7 @@ interface NavbarProps {
   onOpenVoltageDropCalculator?: () => void;
   onOpenLoadCalculator?: () => void;
   onOpenMotorCalculator?: () => void;
+  onOpenTransformerCalculator?: () => void;
   currentView?: string;
   onGoHome?: () => void;
 }
@@ -22,6 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenVoltageDropCalculator,
   onOpenLoadCalculator,
   onOpenMotorCalculator,
+  onOpenTransformerCalculator,
   currentView = 'home',
   onGoHome,
 }) => {
@@ -177,6 +179,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Zap className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400" />
               <span>Motor Calc</span>
+            </button>
+          )}
+
+          {/* Transformer Calculator Direct Button */}
+          {onOpenTransformerCalculator && (
+            <button
+              onClick={onOpenTransformerCalculator}
+              className={`hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-xl transition-all shadow-sm ${
+                currentView === 'transformer-calculator'
+                  ? 'bg-amber-600 text-white shadow-amber-600/30 border border-amber-400'
+                  : 'glass-card text-amber-300 border border-amber-500/30 hover:bg-amber-500/10'
+              }`}
+            >
+              <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+              <span>Transformer</span>
             </button>
           )}
 

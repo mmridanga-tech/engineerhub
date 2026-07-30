@@ -30,6 +30,7 @@ interface CableSizeCalculatorPageProps {
   onOpenVoltageDropCalculator?: () => void;
   onOpenLoadCalculator?: () => void;
   onOpenMotorCalculator?: () => void;
+  onOpenTransformerCalculator?: () => void;
 }
 
 // Standard Cable Table Data (IEC 60364-5-52 / BS 7671)
@@ -80,6 +81,7 @@ export const CableSizeCalculatorPage: React.FC<CableSizeCalculatorPageProps> = (
   onOpenVoltageDropCalculator,
   onOpenLoadCalculator,
   onOpenMotorCalculator,
+  onOpenTransformerCalculator,
 }) => {
   const { showToast } = useTheme();
 
@@ -325,6 +327,15 @@ IEC 60364 & IS 7098 Verified - EngineerHub v2.5`;
               >
                 <Zap className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Motor Current</span>
+              </button>
+            )}
+            {onOpenTransformerCalculator && (
+              <button
+                onClick={onOpenTransformerCalculator}
+                className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-amber-300 border border-amber-500/30 hover:bg-amber-500/10 text-xs font-semibold"
+              >
+                <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <span>Transformer</span>
               </button>
             )}
             <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold flex items-center gap-1.5">
