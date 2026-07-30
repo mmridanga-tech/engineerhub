@@ -1,3 +1,4 @@
+import AppRouter from "./routes/AppRouter";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ThemeProvider } from './context/ThemeContext';
