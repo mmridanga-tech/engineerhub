@@ -29,6 +29,7 @@ interface CableSizeCalculatorPageProps {
   onOpenAIAssistant?: () => void;
   onOpenVoltageDropCalculator?: () => void;
   onOpenLoadCalculator?: () => void;
+  onOpenMotorCalculator?: () => void;
 }
 
 // Standard Cable Table Data (IEC 60364-5-52 / BS 7671)
@@ -78,6 +79,7 @@ export const CableSizeCalculatorPage: React.FC<CableSizeCalculatorPageProps> = (
   onOpenAIAssistant,
   onOpenVoltageDropCalculator,
   onOpenLoadCalculator,
+  onOpenMotorCalculator,
 }) => {
   const { showToast } = useTheme();
 
@@ -314,6 +316,15 @@ IEC 60364 & IS 7098 Verified - EngineerHub v2.5`;
               >
                 <Zap className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Voltage Drop</span>
+              </button>
+            )}
+            {onOpenMotorCalculator && (
+              <button
+                onClick={onOpenMotorCalculator}
+                className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/10 text-xs font-semibold"
+              >
+                <Zap className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Motor Current</span>
               </button>
             )}
             <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold flex items-center gap-1.5">

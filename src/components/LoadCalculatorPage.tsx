@@ -33,6 +33,7 @@ interface LoadCalculatorPageProps {
   onOpenAIAssistant?: () => void;
   onOpenCableSizeCalculator?: () => void;
   onOpenVoltageDropCalculator?: () => void;
+  onOpenMotorCalculator?: () => void;
 }
 
 // Preset Engineering Load Scenarios
@@ -109,6 +110,7 @@ export const LoadCalculatorPage: React.FC<LoadCalculatorPageProps> = ({
   onOpenAIAssistant,
   onOpenCableSizeCalculator,
   onOpenVoltageDropCalculator,
+  onOpenMotorCalculator,
 }) => {
   const { showToast } = useTheme();
 
@@ -343,6 +345,15 @@ IEC 60364-5-52 & NEC Article 220 Verified - EngineerHub v2.5`;
               >
                 <Activity className="w-3.5 h-3.5 text-cyan-400" />
                 <span>Voltage Drop</span>
+              </button>
+            )}
+            {onOpenMotorCalculator && (
+              <button
+                onClick={onOpenMotorCalculator}
+                className="hidden lg:flex items-center gap-2 px-3.5 py-1.5 rounded-xl glass-card text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/10 text-xs font-semibold"
+              >
+                <Zap className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Motor Current</span>
               </button>
             )}
             <span className="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold flex items-center gap-1.5">

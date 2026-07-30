@@ -12,6 +12,7 @@ interface PopularToolsGridProps {
   onOpenCableCalculator?: () => void;
   onOpenVoltageDropCalculator?: () => void;
   onOpenLoadCalculator?: () => void;
+  onOpenMotorCalculator?: () => void;
 }
 
 const getToolIcon = (iconName: string) => {
@@ -38,6 +39,7 @@ export const PopularToolsGrid: React.FC<PopularToolsGridProps> = ({
   onOpenCableCalculator,
   onOpenVoltageDropCalculator,
   onOpenLoadCalculator,
+  onOpenMotorCalculator,
 }) => {
   const [selectedTool, setSelectedTool] = useState<ToolItem | null>(null);
 
@@ -168,6 +170,8 @@ export const PopularToolsGrid: React.FC<PopularToolsGridProps> = ({
                       onOpenVoltageDropCalculator();
                     } else if ((tool.id === 'load-calculator' || titleLower.includes('load calculator')) && onOpenLoadCalculator) {
                       onOpenLoadCalculator();
+                    } else if ((tool.id === 'motor-current-calc' || titleLower.includes('motor current') || titleLower.includes('motor calculator')) && onOpenMotorCalculator) {
+                      onOpenMotorCalculator();
                     } else {
                       setSelectedTool(tool);
                     }
@@ -175,7 +179,7 @@ export const PopularToolsGrid: React.FC<PopularToolsGridProps> = ({
                   className="w-full py-3 px-4 rounded-xl glass-panel text-slate-200 dark:text-slate-200 light:text-slate-800 border border-slate-700/60 hover:border-indigo-500/60 hover:bg-indigo-600/20 hover:text-white transition-all flex items-center justify-center gap-2 text-sm font-semibold group-hover:shadow-md"
                 >
                   <span>
-                    {tool.id === 'cable-size' || tool.title.toLowerCase().includes('cable size') || tool.id === 'voltage-drop' || tool.title.toLowerCase().includes('voltage drop') || tool.id === 'load-calculator' || tool.title.toLowerCase().includes('load calculator')
+                    {tool.id === 'cable-size' || tool.title.toLowerCase().includes('cable size') || tool.id === 'voltage-drop' || tool.title.toLowerCase().includes('voltage drop') || tool.id === 'load-calculator' || tool.title.toLowerCase().includes('load calculator') || tool.id === 'motor-current-calc' || tool.title.toLowerCase().includes('motor current')
                       ? 'Launch Dedicated Calculator'
                       : 'Open Tool'}
                   </span>

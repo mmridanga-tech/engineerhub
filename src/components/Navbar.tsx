@@ -10,6 +10,7 @@ interface NavbarProps {
   onOpenCableCalculator?: () => void;
   onOpenVoltageDropCalculator?: () => void;
   onOpenLoadCalculator?: () => void;
+  onOpenMotorCalculator?: () => void;
   currentView?: string;
   onGoHome?: () => void;
 }
@@ -20,6 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenCableCalculator,
   onOpenVoltageDropCalculator,
   onOpenLoadCalculator,
+  onOpenMotorCalculator,
   currentView = 'home',
   onGoHome,
 }) => {
@@ -152,7 +154,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {onOpenLoadCalculator && (
             <button
               onClick={onOpenLoadCalculator}
-              className={`hidden sm:flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl transition-all shadow-sm ${
+              className={`hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-xl transition-all shadow-sm ${
                 currentView === 'load-calculator'
                   ? 'bg-amber-600 text-white shadow-amber-600/30 border border-amber-400'
                   : 'glass-card text-amber-400 border border-amber-500/30 hover:bg-amber-500/10'
@@ -160,6 +162,21 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
               <span>Load Calc</span>
+            </button>
+          )}
+
+          {/* Motor Current Calculator Direct Button */}
+          {onOpenMotorCalculator && (
+            <button
+              onClick={onOpenMotorCalculator}
+              className={`hidden sm:flex items-center gap-2 px-3 py-2 text-xs font-semibold rounded-xl transition-all shadow-sm ${
+                currentView === 'motor-calculator'
+                  ? 'bg-cyan-600 text-white shadow-cyan-600/30 border border-cyan-400'
+                  : 'glass-card text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/10'
+              }`}
+            >
+              <Zap className="w-3.5 h-3.5 text-cyan-400 fill-cyan-400" />
+              <span>Motor Calc</span>
             </button>
           )}
 

@@ -15,9 +15,10 @@ import { Toast } from './components/Toast';
 import { CableSizeCalculatorPage } from './components/CableSizeCalculatorPage';
 import { VoltageDropCalculatorPage } from './components/VoltageDropCalculatorPage';
 import { LoadCalculatorPage } from './components/LoadCalculatorPage';
+import { MotorCurrentCalculatorPage } from './components/MotorCurrentCalculatorPage';
 
 export function EngineerHubContent() {
-  const [currentView, setCurrentView] = useState<'home' | 'cable-calculator' | 'voltage-drop' | 'load-calculator'>('load-calculator');
+  const [currentView, setCurrentView] = useState<'home' | 'cable-calculator' | 'voltage-drop' | 'load-calculator' | 'motor-calculator'>('motor-calculator');
   const [isAIOpen, setIsAIOpen] = useState(false);
   const [isSpecsOpen, setIsSpecsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -52,6 +53,10 @@ export function EngineerHubContent() {
           setCurrentView('load-calculator');
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
+        onOpenMotorCalculator={() => {
+          setCurrentView('motor-calculator');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         currentView={currentView}
         onGoHome={() => {
           setCurrentView('home');
@@ -84,6 +89,10 @@ export function EngineerHubContent() {
                   setCurrentView('load-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
+                onOpenMotorCalculator={() => {
+                  setCurrentView('motor-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
               />
             </motion.div>
           ) : currentView === 'voltage-drop' ? (
@@ -108,6 +117,10 @@ export function EngineerHubContent() {
                   setCurrentView('load-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
+                onOpenMotorCalculator={() => {
+                  setCurrentView('motor-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
               />
             </motion.div>
           ) : currentView === 'load-calculator' ? (
@@ -130,6 +143,38 @@ export function EngineerHubContent() {
                 }}
                 onOpenVoltageDropCalculator={() => {
                   setCurrentView('voltage-drop');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenMotorCalculator={() => {
+                  setCurrentView('motor-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              />
+            </motion.div>
+          ) : currentView === 'motor-calculator' ? (
+            <motion.div
+              key="motor-calculator"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+            >
+              <MotorCurrentCalculatorPage
+                onBackToHome={() => {
+                  setCurrentView('home');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenAIAssistant={() => setIsAIOpen(true)}
+                onOpenCableSizeCalculator={() => {
+                  setCurrentView('cable-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenVoltageDropCalculator={() => {
+                  setCurrentView('voltage-drop');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenLoadCalculator={() => {
+                  setCurrentView('load-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               />
@@ -168,6 +213,10 @@ export function EngineerHubContent() {
                 }}
                 onOpenLoadCalculator={() => {
                   setCurrentView('load-calculator');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                onOpenMotorCalculator={() => {
+                  setCurrentView('motor-calculator');
                   window.scrollTo({ top: 0, behavior: 'smooth' });
                 }}
               />
