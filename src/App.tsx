@@ -1,3 +1,4 @@
+import EarthPitCalculatorPage from "./components/EarthPitCalculatorPage";
 import DashboardWelcome from "./components/DashboardWelcome";
 import DashboardCards from "./components/DashboardCards";
 import AppRouter from "./routes/AppRouter";
@@ -316,4 +317,3 @@ export default function App() {
     </ThemeProvider>
   );
 }
-
