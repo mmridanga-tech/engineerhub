@@ -1,3 +1,5 @@
+import DashboardWelcome from "./components/DashboardWelcome";
+import DashboardCards from "./components/DashboardCards";
 import AppRouter from "./routes/AppRouter";
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -247,7 +249,11 @@ export function EngineerHubContent() {
                 searchQuery={searchQuery}
                 onSearchChange={setSearchQuery}
               />
+<DashboardWelcome />
 
+<div className="max-w-7xl mx-auto px-6 mt-10">
+  <DashboardCards />
+</div>
               {/* 3. Categories Grid */}
               <CategoriesGrid onSelectCategory={handleSelectCategoryFromGrid} />
 

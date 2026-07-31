@@ -1,3 +1,4 @@
+import DashboardWelcome from "../components/DashboardWelcome";
 import DashboardCards from "../components/DashboardCards";
 import { Hero } from "../components/Hero";
 import { CategoriesGrid } from "../components/CategoriesGrid";
@@ -14,7 +15,7 @@ export default function HomePage() {
         searchQuery=""
         onSearchChange={() => {}}
       />
-
+<DashboardWelcome />
       <div className="max-w-7xl mx-auto px-6 mt-10">
         <DashboardCards />
       </div>
